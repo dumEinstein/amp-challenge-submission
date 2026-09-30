@@ -1,0 +1,27 @@
+[project]
+name = "amp-challenge-factored-transformer"
+version = "1.0.0"
+description = "Factorised-plan causal transformer for de novo antimicrobial peptide design — AMP Challenge submission"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11,<3.12"
+
+# Pinned to the exact versions the submitted library was drawn under. The sampler is
+# deterministic given its seed, but pinning torch removes any chance that a future release
+# changes RNG or kernel behaviour and perturbs the output the organisers diff against.
+dependencies = [
+    "numpy==2.4.6",
+    "torch==2.14.0",
+]
+
+[tool.uv]
+# CPU wheels: generation does not need a GPU and the submitted library was drawn on CPU.
+override-dependencies = []
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
