@@ -18,12 +18,16 @@ authors and not distributed.
   gradients. Its headers annotate each peptide with the upstream databases it occurs in: dbAMP,
   DRAMP, DBAASP, CAMP, SATPdb, APD, AMPDB, DADP, InverPep, CancerPPD, BaAMPs, CyBase.
 
-**Licence: CC0, public domain.** No proprietary or non-public data is involved, so the Full
-Requirements' data-release clause imposes nothing further. Because it is CC0 we **include
-`training.fasta` in this package** rather than merely citing it, and
+**Licence.** The handout states the upstream MarLys aggregation is CC0 / public domain; we have not
+independently verified that at the source and report it as the handout's claim. No proprietary or
+non-public data is involved either way, so the Full Requirements' data-release clause imposes
+nothing further.
+
+The corpus is **referenced, not redistributed** in this repository.
 `TRAINING_DATA_MANIFEST.md` gives SHA-256 checksums, the measured structure, and the reproduction
-recipe (MarLys → filter to 8–50 → remove the held-out slice). `training_ids.txt` lists all 43,911
-accessions.
+recipe (MarLys → filter to 8–50 → remove the held-out slice); `training_ids.txt` lists all 43,911
+accessions, so the exact file can be reconstructed and verified. We can supply it directly to the
+organisers on request.
 
 No other corpus contributes gradients.
 

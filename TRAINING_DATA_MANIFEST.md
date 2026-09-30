@@ -11,8 +11,11 @@
 platform for antimicrobial peptide analysis using DIAMOND and Biopython tools with optimized database
 repeatability indices DAIRI & IDAIRI.* SSRN 6418316, 2026.
 
-**Licence: CC0 / public domain.** There is no restriction on redistribution, so `training.fasta` is
-included in this package rather than merely referenced.
+**Licence.** The handout quoted above states that the upstream MarLys aggregation is CC0 / public
+domain. We report that as the handout's claim: we have not verified it against the MarLys release
+itself. Pending that verification we **reference the corpus rather than redistribute it** — the
+checksums, structure and accession list below let the exact file be reconstructed and verified, and
+we can supply it directly to the organisers on request.
 
 The `MLAMP` identifiers carried by every sequence are MarLys AMP accessions; they run to
 `MLAMP0103200`, consistent with the 103,000-sequence upstream corpus.

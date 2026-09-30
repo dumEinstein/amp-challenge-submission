@@ -14,11 +14,15 @@ to the 8–50 residue window with a held-out slice reserved by the assignment au
 > for antimicrobial peptide analysis using DIAMOND and Biopython tools with optimized database
 > repeatability indices DAIRI & IDAIRI.* SSRN 6418316, 2026.
 
-Because MarLys is CC0 there is no redistribution restriction, so the corpus is **included in this
-repository** under `data/`. `TRAINING_DATA_MANIFEST.md` gives the source, SHA-256 checksums, the
-measured structure and the reproduction recipe (MarLys → filter to 8–50 residues → remove the
-held-out slice), and `training_ids.txt` lists all 43,911 `MLAMP` accessions, so the exact corpus can
-be reconstructed and verified byte-for-byte.
+The corpus is **not redistributed here**; it is referenced rather than copied.
+`TRAINING_DATA_MANIFEST.md` gives the source, SHA-256 checksums, the measured structure and the
+reproduction recipe (MarLys → filter to 8–50 residues → remove the held-out slice), and
+`training_ids.txt` lists all 43,911 `MLAMP` accessions, so the exact corpus can be reconstructed
+from the upstream database and verified byte-for-byte against the checksums. We can supply the
+files directly to the organisers on request.
+
+No proprietary or non-public data contributes to this submission, so the Full Requirements' clause
+on releasing non-public data imposes nothing further.
 
 Obtained via the `amp-grader-demo` bundle distributed for COL870 at IIT Delhi; that assignment is
 built on Phase 1 of AMP Challenge 2027 and states that students are free to enter the competition.
@@ -36,7 +40,7 @@ built on Phase 1 of AMP Challenge 2027 and states that students are free to ente
 | `code/ar_domain.py`, `code/ar_bpe.py` | model, training and sampling |
 | `code/kaggle_rank.py` | ranking, synthesizability gate, 80%-identity screen |
 | `code/factored_model.pt` | trained weights (4.76M parameters) |
-| `data/` | the training corpus, the known-antibacterial set and the held-out split |
+| `data/` | *not in this repository* — where the referenced corpora must be placed to re-run |
 | `pyproject.toml`, `LICENSE` | pinned environment; MIT licence |
 
 ## Reproduce the library
@@ -59,8 +63,12 @@ uv run python code/ar_domain.py sample --ckpt code/factored_model.pt \
 ```
 
 `pyproject.toml` pins torch 2.14.0 (CPU) and numpy 2.4.6, the versions the submitted library was
-drawn under. Generation needs no GPU. The novelty filter reads the corpora from `data/`, so a clean
-checkout reproduces the run with no external downloads.
+drawn under. Generation needs no GPU.
+
+The sampler's novelty filter rejects any draw already present in the reference corpora, so it reads
+`data/training.fasta` and `data/antibacterial.fasta`. Those files are not redistributed here, and
+`generate.py` **refuses to run without them** rather than emit a library that would silently differ
+from the submitted one. Obtain them per `TRAINING_DATA_MANIFEST.md` and place them under `data/`.
 
 ## Reproduce the top-100 ranking
 
