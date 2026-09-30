@@ -1,0 +1,12 @@
+# Force LF everywhere. TRAINING_DATA_MANIFEST.md publishes SHA-256 checksums for the corpora,
+# and those were computed on LF-terminated files: without this, a checkout on Windows with
+# core.autocrlf=true would rewrite the line endings and the checksums would not verify.
+* text=auto eol=lf
+
+*.fasta text eol=lf
+*.csv   text eol=lf
+*.txt   text eol=lf
+*.md    text eol=lf
+*.py    text eol=lf
+
+*.pt binary
